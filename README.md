@@ -1,2 +1,2 @@
 # demo-repo
-demo repo for testing purpose.
+demo repo for testing purpose!
