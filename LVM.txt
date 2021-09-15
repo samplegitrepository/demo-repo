@@ -1,0 +1,23 @@
+How to create LVM in Linux :
+
+1. fdisk -l   ( To view the disks )
+2. fdisk /dev/xvdb
+    type n for new
+    provide partition number
+    Start and End numbers
+    type t  to change the partition type from Linux to Linux LVM.
+    enter 8e to change the type.
+    type w to save the changes.
+3.  lsblk ( To view the blocks )
+4.  pvcreate /dev/xvdb1 ( To create physical volume )
+5.  pvs ( to check the pv )
+6.  vgcreate vglvm /dev/sdb1     (/dev/sdb1 is a physicalvolume)
+7.  vgs ( To check the vg )
+8.  lvcreate -l 100%FREE -n volumename vglvm
+9.  lvs
+10. mkfs.xfs /dev/vglvm/volumename (For LVM ) or  mkswap /dev/vglvm/volumename ( For SWAP )
+11. blkid /dev/vglvm/volumename
+12. mkdir -p /add-lvm
+13. vi /etc/fstab
+14. df -h
+
